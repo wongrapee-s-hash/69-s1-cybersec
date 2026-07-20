@@ -4,7 +4,7 @@ services:
     container_name: 69-s1-db
     ports:
       - 54327:5432
-    environments:
+    environment:
       - POSTGRES_PASSWORD=wongrapee
       - POSTGRES_USER=wongrapee
       - POSTGRES_DB=wongrapee
