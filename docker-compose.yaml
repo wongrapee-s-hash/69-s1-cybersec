@@ -19,4 +19,4 @@ services:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
     volumes:
-      - ./data-admin:/var/lib/pgadmin
+      - pgadmin-data:/var/lib/pgadmin
