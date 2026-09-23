@@ -1,6 +1,5 @@
 data/
 docker
-api.http
 .env
 data-admin/
 data-postgres/

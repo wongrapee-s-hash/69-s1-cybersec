@@ -1,0 +1,194 @@
+# API requests
+
+## 1.Admin
+
+### 1.1 Admin Login
+# @name adminLogin
+POST http://localhost:9092/admin/login
+content-type: application/json
+
+{
+  "email": "wongrapee-s@rmutp.ac.th",
+  "password": "Wongrapee333",
+  "rememberMe": "false"
+}
+
+### 1.2 Admin Signup
+POST http://localhost:9092/admin/auth/register-admin
+content-type: application/json
+
+{
+  "firstName": "Wongrapee",
+  "lastName": "Siliwarin",
+  "email": "wongrapee-s@rmutp.ac.th",
+  "password": "Wongrapee034-0",
+  "confirmPassword": "Wongrapee034-0"
+}
+
+### 1.3 Admin Forgot Password
+POST http://localhost:9092/admin/forgot-password
+content-type: application/json
+
+{
+  "email": "wongrapee-s@rmutp.ac.th"
+}
+
+### 1.3.1 Admin Reset Password
+POST http://localhost:9092/admin/reset-password
+content-type: application/json
+
+{
+  "password": "Wongrapee333",
+  "resetPasswordToken": "b67d4a4d92cc20fb1622f01f8c87ec19dc12901d"
+}
+
+### 1.4 Admin Profile
+GET http://localhost:9092/admin/me
+Authorization: Bearer {{adminLogin.response.body.$.data.token}}
+
+## 2.User
+
+### 2.1 User Signup
+# @name userRegister
+POST http://localhost:9092/api/auth/local/register
+content-type: application/json
+
+{
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "password": "Test1234-",
+  "confirmPassword": "Test1234-"
+}
+
+### 2.2 User Login
+# @name userLogin
+POST http://localhost:9092/api/auth/local
+content-type: application/json
+
+{
+  "identifier": "testuser@example.com",
+  "password": "Test1234-"
+}
+
+### 2.3 User Forgot Password
+# @name userForgotPassword
+POST http://localhost:9092/api/auth/forgot-password
+content-type: application/json
+
+{
+  "email": "testuser@example.com"
+}
+
+### 2.3.1 User Reset Password
+POST http://localhost:9092/api/auth/reset-password
+content-type: application/json
+
+{
+  "code": "144d5e6f839f1a8211b81dcef5b649f9a93d4047a2332cab6cb604e6eb51a18b9d442c35c5df41542aa4f766c4f02e9a28603c43e74021241e4887f3e164be5a",
+  "password": "Test1234-",
+  "passwordConfirmation": "Test1234-"
+}
+
+### 2.4 User Profile
+# @name userProfile
+GET http://localhost:9092/api/users/me
+Authorization: Bearer {{userLogin.response.body.jwt}}
+
+## 3. Content
+
+## 3.1 Student
+
+### 3.1.1 Create
+POST http://localhost:9092/api/students
+content-type: application/json
+
+{
+  "data": {
+    "name": "Somchai Jaidee",
+    "mobile": "0812345678",
+    "cardId": "1100123456789"
+  }
+}
+
+### 3.1.2 List All
+GET http://localhost:9092/api/students
+
+### 3.1.3 List with ID (ใช้ id ที่ได้จาก 3.1.1)
+GET http://localhost:9092/api/students/1
+
+### 3.1.4 Update
+PUT http://localhost:9092/api/students/1
+content-type: application/json
+
+{
+  "data": {
+    "name": "Somchai Jaidee (Updated)",
+    "mobile": "0899999999",
+    "cardId": "1100123456789"
+  }
+}
+
+### 3.1.5 Delete
+DELETE http://localhost:9092/api/students/1
+
+## 3.2 Subject
+
+### 3.2.1 Create
+POST http://localhost:9092/api/subjects
+content-type: application/json
+
+{
+  "data": {
+    "name": "Mathematics"
+  }
+}
+
+### 3.2.2 List All
+GET http://localhost:9092/api/subjects
+
+### 3.2.3 List with ID (ใช้ id ที่ได้จาก 3.2.1)
+GET http://localhost:9092/api/subjects/1
+
+### 3.2.4 Update
+PUT http://localhost:9092/api/subjects/1
+content-type: application/json
+
+{
+  "data": {
+    "name": "Mathematics (Updated)"
+  }
+}
+
+### 3.2.5 Delete
+DELETE http://localhost:9092/api/subjects/1
+
+## 3.3 Teacher
+
+### 3.3.1 Create
+POST http://localhost:9092/api/teachers
+content-type: application/json
+
+{
+  "data": {
+    "name": "Ajarn Somsri"
+  }
+}
+
+### 3.3.2 List All
+GET http://localhost:9092/api/teachers
+
+### 3.3.3 List with ID (ใช้ id ที่ได้จาก 3.3.1)
+GET http://localhost:9092/api/teachers/1
+
+### 3.3.4 Update
+PUT http://localhost:9092/api/teachers/1
+content-type: application/json
+
+{
+  "data": {
+    "name": "Ajarn Somsri (Updated)"
+  }
+}
+
+### 3.3.5 Delete
+DELETE http://localhost:9092/api/teachers/1
