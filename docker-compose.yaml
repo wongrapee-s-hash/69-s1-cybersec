@@ -36,6 +36,8 @@ services:
       - DATABASE_NAME=${POSTGRES_DB}
       - DATABASE_USERNAME=${POSTGRES_USER}
       - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./config:/opt/app/config
     depends_on:
       - db
 
